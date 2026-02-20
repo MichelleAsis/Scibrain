@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Quiz - SciBrain</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <!-- Header -->
+        <header class="quiz-header">
+            <div class="header-left">
+                <button class="btn-exit" id="exitBtn" title="Exit Quiz">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <div class="quiz-info">
+                    <span class="quiz-type">Multiple Choice</span>
+                    <span class="difficulty-badge" id="difficultyBadge">Easy</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="question-counter" id="questionCount">10 Questions</div>
+                <div class="timer" id="timer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="timerText">10:00</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Question Section -->
+        <main class="question-section">
+            <div class="question-number" id="questionNumber">Question 1/10</div>
+            <h2 class="question-text" id="questionText">Loading question...</h2>
+            
+            <!-- Options Grid -->
+            <div class="options-grid" id="optionsGrid">
+                <button class="option-btn" data-index="0">
+                    <span class="option-letter">A</span>
+                    <span class="option-text">Option 1</span>
+                </button>
+                <button class="option-btn" data-index="1">
+                    <span class="option-letter">B</span>
+                    <span class="option-text">Option 2</span>
+                </button>
+                <button class="option-btn" data-index="2">
+                    <span class="option-letter">C</span>
+                    <span class="option-text">Option 3</span>
+                </button>
+                <button class="option-btn" data-index="3">
+                    <span class="option-letter">D</span>
+                    <span class="option-text">Option 4</span>
+                </button>
+            </div>
+
+            <!-- Explanation Box -->
+            <div class="explanation-box" id="explanation" style="display: none;">
+                <div class="explanation-icon">💡</div>
+                <p class="explanation-text" id="explanationText"></p>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="quiz-actions">
+                <button class="btn-next" id="nextBtn" style="display: none;">
+                    Next Question
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Exit Confirmation Modal -->
+    <div class="modal-overlay" id="exitModal">
+        <div class="modal-content">
+            <div class="modal-icon warning">⚠️</div>
+            <h2 class="modal-title">Exit Quiz?</h2>
+            <p class="modal-message">Your progress will be lost. Are you sure you want to exit?</p>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeExitModal()">Cancel</button>
+                <button class="btn-danger" onclick="confirmExit()">Exit Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

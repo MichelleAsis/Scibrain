@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match & Connect - SciBrain</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <!-- Header -->
+        <header class="quiz-header">
+            <div class="header-left">
+                <button class="btn-exit" id="exitBtn" title="Exit Quiz">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <div class="quiz-info">
+                    <span class="quiz-type">Match & Connect</span>
+                    <span class="difficulty-badge" id="difficultyBadge">Easy</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pairs-counter" id="pairsCounter">0 / 10 Matched</div>
+                <div class="timer" id="timer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="timerText">10:00</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <div class="instruction-icon">🧩</div>
+            <p class="instruction-text" id="instructionText">Drag items from the right column and drop them next to their matching term on the left</p>
+        </div>
+
+        <!-- Matching Area -->
+        <main class="matching-section">
+            <div class="matching-grid">
+                <!-- Left Column (Terms - Fixed) -->
+                <div class="column column-left">
+                    <h3 class="column-title">Terms</h3>
+                    <div class="items-container" id="leftColumn">
+                            <!-- Will be populated dynamically -->
+                        </div>
+                    </div>
+
+                <!-- Right Column (Definitions - Draggable) -->
+                <div class="column column-right">
+                    <h3 class="column-title">Definitions</h3>
+                    <div class="items-container" id="rightColumn">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="quiz-actions">
+                <button class="btn-submit" id="submitBtn" disabled>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Check Answers
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Exit Confirmation Modal -->
+    <div class="modal-overlay" id="exitModal">
+        <div class="modal-content">
+            <div class="modal-icon warning">⚠️</div>
+            <h2 class="modal-title">Exit Quiz?</h2>
+            <p class="modal-message">Your progress will be lost. Are you sure you want to exit?</p>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeExitModal()">Cancel</button>
+                <button class="btn-danger" onclick="confirmExit()">Exit Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal-overlay" id="resultsModal">
+        <div class="modal-content results-modal">
+            <div class="results-header">
+                <div class="results-icon" id="resultsIcon">🎉</div>
+                <h2 class="results-title" id="resultsTitle">Quiz Complete!</h2>
+            </div>
+            <div class="results-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="correctCount">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="incorrectCount">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="percentageScore">0%</div>
+                    <div class="stat-label">Score</div>
+                </div>
+            </div>
+            <div class="results-actions">
+                <button class="btn-secondary" onclick="reviewAnswers()">Review Answers</button>
+                <button class="btn-primary" onclick="finishQuiz()">
+                    View Detailed Results
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cell Biology - ScienceReview</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-navbar">
+        <div class="nav-left">
+            <!-- Mobile Menu Button (only visible on mobile) -->
+            <button class="btn-mobile-menu" id="mobileMenuBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            
+            <button class="btn-back" id="backBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span class="btn-text">Back</span>
+            </button>
+            <div class="topic-info">
+                <div class="logo-small">
+                <img src="../../../public/images/SciBrain.png" alt="SciBrain Logo" class="logo-icon">
+                </div>
+                <div class="topic-details">
+                    <h1 class="topic-title">[Title]</h1>
+                    <p class="topic-date">1/10/2026</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-right">
+            <button class="btn-nav-icon" id="toggleAnnotationsBtn" title="Hide Annotations">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span class="btn-text">Hide Annotations</span>
+            </button>
+            <!-- <button class="btn-nav-icon" id="shareBtn" title="Share">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+                <span class="btn-text">Share</span>
+            </button>
+            <button class="btn-nav-icon" title="Export">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span class="btn-text">Export</span>
+            </button> -->
+            <button class="btn-play-games" id="playGamesBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                </svg>
+                <span class="btn-text">Play Games</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <h2>Menu</h2>
+                <button class="btn-close-mobile-menu" id="closeMobileMenuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="mobile-menu-items">
+                <div class="mobile-menu-item" data-action="show-toc">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    <span>Table of Contents</span>
+                </div>
+                <div class="mobile-menu-item" data-action="show-annotations">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    <span>My Annotations</span>
+                </div>
+                <div class="mobile-menu-item" data-action="toggle-annotations">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span>Toggle Annotations</span>
+                </div>
+                <div class="mobile-menu-item" data-action="share">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="18" cy="5" r="3"></circle>
+                        <circle cx="6" cy="12" r="3"></circle>
+                        <circle cx="18" cy="19" r="3"></circle>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                    <span>Share</span>
+                </div>
+                <div class="mobile-menu-item" data-action="play-games">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                    </svg>
+                    <span>Play Games</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Sidebar - Table of Contents -->
+        <aside class="sidebar-left" id="sidebarLeft">
+            <button class="btn-close-sidebar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h2 class="sidebar-title">Table of Contents</h2>
+            <nav class="toc-nav">
+                <a href="#section-1" class="toc-item active">[Sample Title]</a>
+                <a href="#introduction" class="toc-item">Introduction</a>
+                <a href="#key-concepts" class="toc-item">Key Concepts</a>
+                <a href="#detailed-explanation" class="toc-item">Detailed Explanation</a>
+                <a href="#important-facts" class="toc-item">Important Facts</a>
+                <a href="#summary" class="toc-item">Summary</a>
+            </nav>
+
+            <!-- Private Annotations Notice -->
+            <div class="private-notice">
+                <div class="notice-icon">🔒</div>
+                <div class="notice-content">
+                    <p class="notice-title">Private Annotations</p>
+                    <p class="notice-text">Your highlights and notes are only visible to you and won't be shared.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Content Area -->
+        <main class="content-area">
+            <!-- Annotation Toolbar -->
+            <div class="annotation-toolbar">
+                <span class="toolbar-label">Annotation Tools:</span>
+                <button class="tool-btn" data-tool="highlight" title="Highlight">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                    </svg>
+                    <span class="btn-text">Highlight</span>
+                </button>
+                <button class="tool-btn" data-tool="note" title="Add Note">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    <span class="btn-text">Add Note</span>
+                </button>
+                <button class="tool-btn" data-tool="bookmark" title="Bookmark">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span class="btn-text">Bookmark</span>
+                </button>
+            </div>
+
+            <!-- Content Sections -->
+            <article class="content-document">
+                <section class="content-section" id="section-1">
+                    <h1 class="section-heading">[Sample Title]</h1>
+                </section>
+
+                <section class="content-section" id="introduction">
+                    <h2 class="section-heading">Introduction</h2>
+                    <p class="section-text">
+                        This is a sample extraction from your uploaded file. In a real implementation, this would be the OCR-extracted or parsed content from your PDF, image, or text file.
+                    </p>
+                </section>
+
+                <section class="content-section" id="key-concepts">
+                    <h2 class="section-heading">Key Concepts</h2>
+                    <ul class="concept-list">
+                        <li class="concept-item">
+                            <strong>**Cell Structure**:</strong> Understanding the basic building blocks of life
+                        </li>
+                        <li class="concept-item">
+                            <strong>**Organelles**:</strong> Specialized structures within cells
+                        </li>
+                        <li class="concept-item">
+                            <strong>**Cell Membrane**:</strong> The protective barrier that controls what enters and exits the cell
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="content-section" id="detailed-explanation">
+                    <h2 class="section-heading">Detailed Explanation</h2>
+                    <p class="section-text">
+                        Cells are the fundamental units of life. Every living organism is composed of one or more cells. The cell membrane is a selectively permeable barrier that protects the cell and regulates the passage of materials in and out of the cell.
+                    </p>
+
+                    <h3 class="subsection-heading">### Types of Cells</h3>
+                    <ol class="numbered-list">
+                        <li class="list-item">
+                            <strong>**Prokaryotic Cells**:</strong> Simple cells without a nucleus
+                        </li>
+                        <li class="list-item">
+                            <strong>**Eukaryotic Cells**:</strong> Complex cells with a defined nucleus and organelles
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="content-section" id="important-facts">
+                    <h2 class="section-heading">Important Facts</h2>
+                    <p class="section-text">
+                        • All living things are made of cells<br>
+                        • Cells contain genetic material (DNA)<br>
+                        • Different types of cells have different functions
+                    </p>
+                </section>
+
+                <section class="content-section" id="summary">
+                    <h2 class="section-heading">Summary</h2>
+                    <p class="section-text">
+                        Understanding cell structure and function is fundamental to biology. Cells work together to form tissues, organs, and complete organisms.
+                    </p>
+                </section>
+            </article>
+        </main>
+
+        <!-- Right Sidebar - My Annotations -->
+        <aside class="sidebar-right" id="sidebarRight">
+            <button class="btn-close-sidebar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h2 class="sidebar-title">My Annotations</h2>
+            <div class="annotations-container">
+                <div class="empty-state">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <p class="empty-state-text">No annotations yet</p>
+                    <p class="empty-state-subtext">Start highlighting or adding notes</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Mobile FAB (Floating Action Button) -->
+    <div class="mobile-fab-container">
+        <button class="mobile-fab-btn" id="mobileFabBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+        </button>
+        <div class="mobile-fab-menu" id="mobileFabMenu">
+            <button class="mobile-fab-option" data-tool="highlight" title="Highlight">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 20h9"></path>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+            </button>
+            <button class="mobile-fab-option" data-tool="note" title="Add Note">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+            </button>
+            <button class="mobile-fab-option" data-tool="bookmark" title="Bookmark">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

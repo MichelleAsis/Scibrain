@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Learning Games - SciBrain</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../../../public/images/SciBrain.png">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-navbar">
+        <div class="nav-container">
+            <button class="btn-back" id="backBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Review
+            </button>
+            <div class="nav-right">
+                <div class="topic-badge">
+                <img src="../../../public/images/SciBrain.png" alt="SciBrain Logo" class="logo-icon">
+                    <span class="badge-text" id="topicName">THIS IS WHERE THE REVIEWER NAME GOES</span>
+                </div>
+                <button class="btn-dashboard" id="dashboardBtn">Dashboard</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="games-container">
+        <!-- Header Section -->
+        <header class="games-header">
+            <div class="header-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                    <circle cx="8" cy="12" r="2"></circle>
+                    <path d="M18 10h0M18 14h0"></path>
+                </svg>
+            </div>
+            <h1 class="games-title">Interactive Learning Games</h1>
+            <p class="games-subtitle">Test your knowledge with fun and engaging quizzes</p>
+        </header>
+
+        <!-- Games Grid -->
+        <div class="games-grid">
+            <!-- True or False Card -->
+            <div class="game-card" data-game="true-false">
+                <div class="card-icon blue">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">True or False</h3>
+                    <p class="card-description">Test your knowledge with true/false statements</p>
+                </div>
+                <button class="btn-play">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Play Now
+                </button>
+            </div>
+
+            <!-- Multiple Choice Card -->
+            <div class="game-card" data-game="multiple-choice">
+                <div class="card-icon green">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Multiple Choice</h3>
+                    <p class="card-description">Choose the correct answer from multiple options</p>
+                </div>
+                <button class="btn-play">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Play Now
+                </button>
+            </div>
+
+            <!-- Match & Connect Card -->
+            <div class="game-card" data-game="match-connect">
+                <div class="card-icon orange">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6"></path>
+                        <path d="M17 7l-5 5m0 0l-5 5m5-5l5 5m-5-5l-5-5"></path>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Match & Connect</h3>
+                    <p class="card-description">Match terms with their definitions</p>
+                </div>
+                <button class="btn-play">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Play Now
+                </button>
+            </div>
+
+            <!-- Identification Card -->
+            <div class="game-card" data-game="identification">
+                <div class="card-icon red">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Identification</h3>
+                    <p class="card-description">Identify and label key concepts</p>
+                </div>
+                <button class="btn-play">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Play Now
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Quiz Configuration Modal -->
+    <div class="modal-overlay" id="quizConfigModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-container">
+                    <span class="modal-icon" id="modalIcon">❓</span>
+                    <h2 class="modal-title" id="modalTitle">Configure Quiz</h2>
+                </div>
+                <button class="btn-close" onclick="closeQuizConfig()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Number of Questions -->
+                <div class="setting-group">
+                    <label class="setting-label">Number of Questions</label>
+                    <div class="number-selector">
+                        <button class="btn-number" id="decreaseBtn" onclick="decreaseNumber()">−</button>
+                        <input type="number" class="number-input" id="questionNumber" value="10" readonly>
+                        <button class="btn-number" id="increaseBtn" onclick="increaseNumber()">+</button>
+                    </div>
+                    <p class="setting-hint" id="numberHint">Choose between 5 and 50 questions</p>
+                </div>
+
+                <!-- Difficulty Level -->
+                <div class="setting-group">
+                    <label class="setting-label">Difficulty Level</label>
+                    <div class="difficulty-options">
+                        <button class="btn-difficulty active" data-difficulty="easy" onclick="selectDifficulty('easy')">
+                            <span class="difficulty-icon">😊</span>
+                            <span class="difficulty-text">Easy</span>
+                        </button>
+                        <button class="btn-difficulty" data-difficulty="medium" onclick="selectDifficulty('medium')">
+                            <span class="difficulty-icon">🤔</span>
+                            <span class="difficulty-text">Medium</span>
+                        </button>
+                        <button class="btn-difficulty" data-difficulty="hard" onclick="selectDifficulty('hard')">
+                            <span class="difficulty-icon">🔥</span>
+                            <span class="difficulty-text">Hard</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Time Limit Toggle -->
+                <div class="setting-group">
+                    <div class="setting-header">
+                        <label class="setting-label">Time Limit</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="timeLimitToggle" onchange="toggleTimer()">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="time-settings" id="timeSettings" style="display: none;">
+                        <div class="time-selector">
+                            <label class="time-label">Timer duration:</label>
+                            <select class="time-select" id="timePerQuestion" onchange="selectTime(this.value)">
+                                <option value="30">30 seconds</option>
+                                <option value="60">1 minute</option>
+                                <option value="120">2 minutes</option>
+                                <option value="300">5 minutes</option>
+                                <option value="600" selected>10 minutes</option>
+                                <option value="900">15 minutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeQuizConfig()">Cancel</button>
+                <button class="btn-primary" onclick="startQuiz()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Start Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

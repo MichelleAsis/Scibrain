@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "api/[...route].js": {
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/src/pages/HomePage/index.html"
+    }
+  ]
+}
+

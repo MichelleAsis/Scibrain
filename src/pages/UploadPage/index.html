@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Upload Your Science Topic - SciBrain</title>
+    
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- Tesseract.js for OCR -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="btn-back" aria-label="Go back">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span class="btn-text">Back</span>
+                </button>
+                <div class="logo">
+                <img src="../../../public/images/SciBrain.png" alt="SciBrain Logo" class="logo-icon">
+                    <span class="logo-text">SciBrain</span>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-link">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="upload-container">
+        <div class="upload-content">
+            <!-- Header -->
+            <header class="upload-header">
+                <h1 class="upload-title">Upload Your Science Topic</h1>
+                <p class="upload-subtitle">Upload a file or paste your study material to create an interactive reviewer</p>
+            </header>
+
+            <!-- Tab Switcher -->
+            <div class="tab-switcher">
+                <button class="tab-btn active" data-tab="upload" aria-label="Upload file tab">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <span>Upload</span>
+                </button>
+                <button class="tab-btn" data-tab="scan" aria-label="Scan document tab">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                        <circle cx="12" cy="13" r="4"></circle>
+                    </svg>
+                    <span>Scan</span>
+                </button>
+                <button class="tab-btn" data-tab="paste" aria-label="Paste text tab">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    </svg>
+                    <span>Paste</span>
+                </button>
+            </div>
+
+            <!-- Tab Content Container -->
+            <div class="tab-content-container">
+                <!-- Upload File Tab -->
+                <div class="tab-content active" id="uploadTab">
+                    <!-- Topic Title Input -->
+                    <div class="input-group">
+                        <label for="topicTitle" class="input-label">Topic Title</label>
+                        <input 
+                            type="text" 
+                            id="topicTitle" 
+                            class="input-field" 
+                            placeholder="e.g., Cell Biology Basics"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <!-- File Upload Area -->
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <p class="upload-text">Tap to select file</p>
+                        <p class="upload-subtext">or drag and drop here</p>
+                        <button class="btn-browse" type="button">Browse Files</button>
+                        <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png,.txt" hidden>
+                    </div>
+
+                    <!-- File Preview -->
+                    <div class="file-preview" id="filePreview" style="display: none;">
+                        <div class="file-preview-content">
+                            <div class="file-info">
+                                <svg class="file-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                    <polyline points="13 2 13 9 20 9"></polyline>
+                                </svg>
+                                <div class="file-details">
+                                    <p class="file-name" id="fileName">filename.pdf</p>
+                                    <p class="file-size" id="fileSize">2.5 MB</p>
+                                </div>
+                            </div>
+                            <button class="btn-remove" id="removeFile" type="button" aria-label="Remove file">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Supported File Types -->
+                    <div class="file-types">
+                        <div class="file-type-card">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            <p class="file-type-label">PDF</p>
+                        </div>
+                        <div class="file-type-card">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <p class="file-type-label">Images</p>
+                        </div>
+                        <div class="file-type-card">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                            <p class="file-type-label">Text</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scan Document Tab -->
+                <div class="tab-content" id="scanTab">
+                    <div class="input-group">
+                        <label for="scanTopicTitle" class="input-label">Topic Title</label>
+                        <input 
+                            type="text" 
+                            id="scanTopicTitle" 
+                            class="input-field" 
+                            placeholder="e.g., Handwritten Notes"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="scanner-container">
+                        <!-- Camera View -->
+                        <div class="camera-view" id="cameraView" style="display: none;">
+                            <video id="cameraStream" autoplay playsinline muted></video>
+                            <canvas id="captureCanvas" style="display: none;"></canvas>
+                            <div class="camera-controls">
+                                <button class="btn-camera-control" id="captureBtn" type="button" aria-label="Capture photo">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                    </svg>
+                                </button>
+                                <button class="btn-camera-control btn-secondary" id="stopCameraBtn" type="button" aria-label="Stop camera">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="6" y="6" width="12" height="12"></rect>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Start Camera -->
+                        <div class="start-camera-container" id="startCameraContainer">
+                            <div class="scanner-icon">📷</div>
+                            <h3 class="scanner-title">Scan Your Document</h3>
+                            <p class="scanner-text">Use your camera to capture and extract text</p>
+                            <button class="btn-start-camera" id="startCameraBtn" type="button">Start Camera</button>
+                        </div>
+
+                        <!-- Preview -->
+                        <div class="captured-preview" id="capturedPreview" style="display: none;">
+                            <img id="capturedImage" alt="Captured document">
+                            <div class="preview-controls">
+                                <button class="btn-preview-action btn-retake" id="retakeBtn" type="button">Retake</button>
+                                <button class="btn-preview-action btn-process" id="processImageBtn" type="button">Extract Text</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scanner-tips">
+                        <h4>💡 Tips: Good lighting, steady camera, clear text, no glare</h4>
+                    </div>
+                </div>
+
+                <!-- Paste Text Tab -->
+                <div class="tab-content" id="pasteTab">
+                    <!-- Topic Title Input -->
+                    <div class="input-group">
+                        <label for="pasteTopicTitle" class="input-label">Topic Title</label>
+                        <input 
+                            type="text" 
+                            id="pasteTopicTitle" 
+                            class="input-field" 
+                            placeholder="e.g., Photosynthesis Overview"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <!-- Paste Content Area -->
+                    <div class="input-group">
+                        <label for="pasteContent" class="input-label">Paste Your Content</label>
+                        <textarea 
+                            id="pasteContent" 
+                            class="textarea-field" 
+                            placeholder="Paste your science notes, textbook excerpts, or study material here..."
+                            rows="15"
+                        ></textarea>
+                        <p class="character-count" id="charCount">0 characters</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <div class="button-container">
+                <button class="btn-generate" id="generateBtn" type="button">Generate Reviewer</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Modal -->
+    <div class="loading-modal" id="loadingModal">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3 class="loading-title">Processing Your Content...</h3>
+            <p class="loading-text" id="loadingText">Extracting text from file...</p>
+            <div class="loading-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="contentprocessor.js"></script>
+    <script src="CameraScanner.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

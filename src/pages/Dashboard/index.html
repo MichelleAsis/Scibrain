@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SciBrain</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../../../public/images/SciBrain.png">
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../public/images/SciBrain.png" alt="SciBrain Logo" class="logo-icon">
+                <span class="logo-text">SciBrain</span>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-nav active" id="homeBtn">Home</button>
+                <!-- <button class="btn-nav" id="settingsBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m0 6l4.2 4.2M23 12h-6m-6 0H1m13.2 5.2l-4.2-4.2m0-6l-4.2-4.2"></path>
+                    </svg>
+                    Settings
+                </button> -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+        <p class="loading-text">Loading your reviewers...</p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1 class="welcome-title" id="welcomeTitle">Welcome Back! 👋</h1>
+            <p class="welcome-subtitle">Track your progress and continue your science journey</p>
+        </section>
+
+        <!-- Stats Grid -->
+        <section class="stats-grid">
+            <div class="stat-card" data-stat="reviewers">
+                <div class="stat-content">
+                    <p class="stat-label">Topics Reviewed</p>
+                    <h2 class="stat-value" id="statReviewers">0</h2>
+                </div>
+                <div class="stat-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stat-card" data-stat="games">
+                <div class="stat-content">
+                    <p class="stat-label">Games Played</p>
+                    <h2 class="stat-value" id="statGames">0</h2>
+                </div>
+                <div class="stat-icon yellow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stat-card" data-stat="score">
+                <div class="stat-content">
+                    <p class="stat-label">Average Score</p>
+                    <h2 class="stat-value" id="statScore">0%</h2>
+                </div>
+                <div class="stat-icon blue">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stat-card" data-stat="documents">
+                <div class="stat-content">
+                    <p class="stat-label">Documents</p>
+                    <h2 class="stat-value" id="statDocuments">0</h2>
+                </div>
+                <div class="stat-icon red">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Your Reviews Section -->
+        <section class="reviews-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Your Reviews</h2>
+                    <p class="section-subtitle" id="reviewsSubtitle">Loading...</p>
+                </div>
+                <button class="btn-new-review" id="newReviewBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    New Review
+                </button>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state-card" id="emptyState">
+                <div class="empty-state-content">
+                    <div class="empty-state-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="empty-state-title">No Reviews Yet</h3>
+                    <p class="empty-state-text">Start creating interactive study materials by uploading your first topic</p>
+                    <button class="btn-create-first" id="createFirstBtn">Create Your First Review</button>
+                </div>
+            </div>
+
+            <!-- Reviewer Cards Grid -->
+            <div class="reviewer-grid" id="reviewerGrid" style="display: none;">
+                <!-- Reviewer cards will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Quick Actions Section -->
+        <section class="quick-actions">
+            <div class="action-card" id="actionCreate">
+                <div class="action-icon green">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </div>
+                <p class="action-text">Create a new interactive study reviewer</p>
+            </div>
+
+            <div class="action-card" id="actionExplore">
+                <div class="action-icon blue">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <p class="action-text">Browse all your study materials</p>
+            </div>
+
+            <!-- <div class="action-card" id="actionSettings">
+                <div class="action-icon yellow">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m0 6l4.2 4.2M23 12h-6m-6 0H1m13.2 5.2l-4.2-4.2m0-6l-4.2-4.2"></path>
+                    </svg>
+                </div>
+                <p class="action-text">Customize your learning experience</p>
+            </div> -->
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

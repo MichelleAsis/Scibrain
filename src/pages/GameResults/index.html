@@ -1,0 +1,135 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Results - SciBrain</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../../../public/images/SciBrain.png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="../../../public/images/SciBrain.png" alt="SciBrain Logo" class="logo">
+                <h1 class="app-name">SciBrain</h1>
+            </div>
+            <div class="header-title">
+                <div class="icon-wrapper">
+                    <span class="trophy-icon">🏆</span>
+                </div>
+                <h2>Game Results</h2>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Results Summary Card -->
+            <div class="results-card">
+                <div class="results-header">
+                    <div class="trophy-display">
+                        <div class="trophy-circle">
+                            <span class="trophy-emoji">🏆</span>
+                        </div>
+                    </div>
+                    
+                    <h1 class="results-title" id="resultsTitle">Great Job!</h1>
+                    <p class="results-message" id="resultsMessage">You're making excellent progress!</p>
+                    
+                    <div class="score-display">
+                        <div class="score-item">
+                            <div class="score-number" id="scoreCorrect">0</div>
+                            <div class="score-label">Correct</div>
+                        </div>
+                        <div class="score-divider">/</div>
+                        <div class="score-item">
+                            <div class="score-number" id="scoreTotal">0</div>
+                            <div class="score-label">Total</div>
+                        </div>
+                    </div>
+
+                    <div class="percentage-bar">
+                        <div class="percentage-fill" id="percentageFill">
+                            <span class="percentage-text" id="percentageText">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Breakdown -->
+                <div class="performance-section">
+                    <h3 class="section-title">Performance Breakdown</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card stat-correct">
+                            <div class="stat-icon">✓</div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="statCorrect">0</div>
+                                <div class="stat-label">Correct Answers</div>
+                            </div>
+                        </div>
+                        <div class="stat-card stat-incorrect">
+                            <div class="stat-icon">✗</div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="statIncorrect">0</div>
+                                <div class="stat-label">Incorrect Answers</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Stats -->
+                    <div class="additional-stats">
+                        <div class="stat-row">
+                            <span class="stat-row-label">Quiz Type:</span>
+                            <span class="stat-row-value" id="quizType">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-row-label">Difficulty:</span>
+                            <span class="stat-row-value">
+                                <span class="difficulty-badge" id="difficultyBadge">-</span>
+                            </span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-row-label">Time Taken:</span>
+                            <span class="stat-row-value" id="timeTaken">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Section -->
+            <div class="review-section" id="reviewSection">
+                <div class="review-header">
+                    <h2 class="review-title">Review Incorrect Answers</h2>
+                    <p class="review-subtitle">Study these questions to improve your understanding</p>
+                </div>
+                
+                <div class="questions-list" id="questionsList">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions-section">
+                <button class="btn btn-secondary" id="backToReviewBtn">
+                    <span class="btn-icon">📚</span>
+                    Back to Reviewer
+                </button>
+                <button class="btn btn-primary" id="tryAgainBtn">
+                    <span class="btn-icon">🔄</span>
+                    Try Another Game
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Loading results...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

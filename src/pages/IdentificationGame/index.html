@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identification Quiz - SciBrain</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <!-- Header -->
+        <header class="quiz-header">
+            <div class="header-left">
+                <button class="btn-exit" id="exitBtn" title="Exit Quiz">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <div class="quiz-info">
+                    <span class="quiz-type">Identification</span>
+                    <span class="difficulty-badge" id="difficultyBadge">Easy</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="question-counter" id="questionCount">10 Questions</div>
+                <div class="timer" id="timer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="timerText">10:00</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Question Section -->
+        <main class="question-section">
+            <div class="question-number" id="questionNumber">Question 1/10</div>
+            <h2 class="question-text" id="questionText">Loading question...</h2>
+            
+            <!-- Hint Display -->
+            <div class="hint-container" id="hintContainer" style="display: none;">
+                <div class="hint-icon">💡</div>
+                <p class="hint-text" id="hintText"></p>
+            </div>
+
+            <!-- Answer Input -->
+            <div class="answer-input-container">
+                <input 
+                    type="text" 
+                    class="answer-input" 
+                    id="answerInput" 
+                    placeholder="Type your answer here..."
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <button class="btn-hint" id="hintBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    Show Hint
+                </button>
+            </div>
+
+            <!-- Explanation Box -->
+            <div class="explanation-box" id="explanation" style="display: none;">
+                <div class="explanation-header">
+                    <div class="explanation-icon" id="explanationIcon">✓</div>
+                    <h3 class="explanation-title" id="explanationTitle">Correct!</h3>
+                </div>
+                <p class="explanation-text" id="explanationText"></p>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="quiz-actions">
+                <button class="btn-submit" id="submitBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Submit Answer
+                </button>
+                <button class="btn-next" id="nextBtn" style="display: none;">
+                    Next Question
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Exit Confirmation Modal -->
+    <div class="modal-overlay" id="exitModal">
+        <div class="modal-content">
+            <div class="modal-icon warning">⚠️</div>
+            <h2 class="modal-title">Exit Quiz?</h2>
+            <p class="modal-message">Your progress will be lost. Are you sure you want to exit?</p>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeExitModal()">Cancel</button>
+                <button class="btn-danger" onclick="confirmExit()">Exit Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
